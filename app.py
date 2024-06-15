@@ -11,9 +11,11 @@ qa_db = FAISS.load_local("QA_db", embedding_model, allow_dangerous_deserializati
 
 question = st.text_area('Введите вопрос:', 'Текст вопроса...')
 
-result = npa_db.similarity_search(question)
+
 options = st.selectbox('Выберете вариант ответа', ('Ответ из НПА', 'Похожие запросы'))
 if options == 'Ответ из НПА':
+    result = npa_db.similarity_search(question)
+    
     container = st.container(border=True)
     container.write(result[0].page_content)
     container.write('Источник:')

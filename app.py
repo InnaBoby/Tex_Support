@@ -15,8 +15,7 @@ options = st.selectbox('Выберете вариант ответа', ('', 'О�
 if options == '':
     st.write('Не выбран тип ответа')
 
-    
-if options == 'Ответ из НПА':
+elif options == 'Ответ из НПА':
     result = npa_db.similarity_search(question)
     
     container = st.container(border=True)
@@ -39,8 +38,7 @@ if options == 'Ответ из НПА':
     container.write('Источник:')
     container.write(result[3].metadata)
 
-
-if options == 'Похожие запросы':
+elif options == 'Похожие запросы':
     similar_question = qa_db.similarity_search(question)
 
 

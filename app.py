@@ -11,8 +11,11 @@ qa_db = FAISS.load_local("QA_db", embedding_model, allow_dangerous_deserializati
 
 question = st.text_area('Введите вопрос:', 'Текст вопроса...')
 
+options = st.selectbox('Выберете вариант ответа', ('', 'Ответ из НПА', 'Похожие запросы'))
+if options == '':
+    st.write('Не выбран тип ответа')
 
-options = st.selectbox('Выберете вариант ответа', ('Ответ из НПА', 'Похожие запросы'))
+    
 if options == 'Ответ из НПА':
     result = npa_db.similarity_search(question)
     
@@ -43,25 +46,25 @@ if options == 'Похожие запросы':
 
     container = st.container(border=True)
     container.write(f':blue[{similar_question[0].page_content}]')
-    if st.toggle('Показать решение 1'):
+    if st.toggle('Показать ответ техподдержки 1'):
         st.write(f':green[{similar_question[0].metadata}]')
 
 
     container = st.container(border=True)
     container.write(f':blue[{similar_question[1].page_content}]')
-    if st.toggle('Показать решение 2'):
+    if st.toggle('Показать ответ техподдержки 2'):
         st.write(f':green[{similar_question[1].metadata}]')
 
 
     container = st.container(border=True)
     container.write(f':blue[{similar_question[2].page_content}]')
-    if st.toggle('Показать решение 3'):
+    if st.toggle('Показать ответ техподдержки 3'):
         st.write(f':green[{similar_question[2].metadata}]')
 
 
     container = st.container(border=True)
     container.write(f':blue[{similar_question[3].page_content}]')
-    if st.toggle('Показать решение 4'):
+    if st.toggle('Показать ответ техподдержки 4'):
         st.write(f':green[{similar_question[3].metadata}]')
 
 

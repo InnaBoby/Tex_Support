@@ -1,5 +1,4 @@
 accelerate==0.31.0
-alabaster @ file:///home/ktietz/src/ci/alabaster_1611921544520/work
 altair==5.3.0
 anaconda-client @ file:///C:/ci/anaconda-client_1635342725944/work
 anaconda-navigator==2.2.0
